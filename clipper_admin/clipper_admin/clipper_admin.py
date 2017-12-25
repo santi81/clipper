@@ -285,8 +285,8 @@ class ClipperConnection(object):
         :py:exc:`clipper.ClipperException`
         """
 
-        if not self.connected:
-            raise UnconnectedException()
+        #if not self.connected:
+        #    raise UnconnectedException()
         image = self.build_model(name, version, model_data_path, base_image,
                                  container_registry)
         self.deploy_model(name, version, input_type, image, labels,
@@ -449,14 +449,14 @@ class ClipperConnection(object):
         character (e.g. 'example.com', regex used for validation is
         '[a-z0-9]([-a-z0-9]*[a-z0-9])?\Z'.
         """
-        if not self.connected:
-            raise UnconnectedException()
+        #if not self.connected:
+        #    raise UnconnectedException()
         version = str(version)
         _validate_versioned_model_name(name, version)
         self.cm.deploy_model(
             name, version, input_type, image, num_replicas=num_replicas)
-        self.register_model(
-            name, version, input_type, image=image, labels=labels)
+        #self.register_model(
+        #    name, version, input_type, image=image, labels=labels)
         logger.info("Done deploying model {name}:{version}.".format(
             name=name, version=version))
 
